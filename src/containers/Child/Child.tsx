@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { childSelector } from './store/selectors';
 import * as ChildActions from './store/actions';
-import { ChildContainer, NavigateButton } from '../../components/StyledComponents/Child';
+import { ActionButtons, ChildContainer, NavigateButton, TypingEffect } from '../../components/StyledComponents/Child';
 
 export const Child: React.FC<any> = () => {
   const dispatch = useDispatch();
@@ -14,14 +14,21 @@ export const Child: React.FC<any> = () => {
 
     // unsubscribe to event source while component unmount.
     return () => {
-      dispatch(ChildActions.unsbscribe());
+      dispatch(ChildActions.unsubscribe());
     };
   }, [dispatch]);
 
   return (
     <ChildContainer>
-      <label> {content} </label>
-      <NavigateButton type="button" onClick={() => dispatch(ChildActions.navigateToHome())}>BACK</NavigateButton>
+      <TypingEffect>{content}</TypingEffect>
+      <ActionButtons>
+        <NavigateButton type="button" onClick={() => dispatch(ChildActions.unsubscribe())}>
+          STOP
+        </NavigateButton>
+        <NavigateButton type="button" onClick={() => dispatch(ChildActions.navigateToHome())}>
+          BACK
+        </NavigateButton>
+      </ActionButtons>
     </ChildContainer>
   );
 };

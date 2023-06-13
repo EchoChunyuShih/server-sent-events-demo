@@ -3,7 +3,7 @@ import { ChildActionTypes } from './constants';
 
 export const subscribe = () => action(ChildActionTypes.SUBSCRIBE_TO_CHILD_UPDATES);
 
-export const unsbscribe = () => action(ChildActionTypes.UNSUBSCRIBE_TO_CHILD_UPDATES);
+export const unsubscribe = () => action(ChildActionTypes.UNSUBSCRIBE_TO_CHILD_UPDATES);
 
 export const setChannel = (channel: any) => action(ChildActionTypes.SET_UPDATE_CHANNEL, channel);
 

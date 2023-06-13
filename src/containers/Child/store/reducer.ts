@@ -22,7 +22,7 @@ export const childReducer = (state: ChildState = initialState, action: ChildActi
 
     case ChildActionTypes.SET_CHILD_DATA:
       return produce(state, (draft: Draft<ChildState>) => {
-        draft.content = action.payload;
+        draft.content = draft.content + action.payload.replace('\\n', '\n');
       });
 
     default:

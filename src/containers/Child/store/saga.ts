@@ -17,7 +17,8 @@ function* subscribe() {
       const event: UpdateEventType = yield take(channel);
       if (event.type === EVENT_TYPES.CHILD_UPDATES) {
         const data = JSON.parse(String(event.data));
-        yield put(ChildActions.setChildData(data.time));
+        console.log('data', data);
+        yield put(ChildActions.setChildData(data.data));
       }
     }
   } catch (error) {
